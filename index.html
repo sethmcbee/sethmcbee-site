@@ -6,7 +6,7 @@
     <title>Seth McBee</title>
     <style>
         :root {
-            /* Muted morning palette: linen, soft sand, hazy sky */
+            /* Initial Morning Linen Palette */
             --bg-start: #fdfcfb;
             --bg-end: #e2d1c3;
         }
@@ -21,7 +21,7 @@
             align-items: center;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
-            transition: background 4s ease-in-out;
+            transition: background 5s ease-in-out; /* Slow morning transition */
             cursor: pointer;
             overflow: hidden;
             user-select: none;
@@ -36,9 +36,9 @@
         .text-fade {
             font-size: 1.5rem;
             font-weight: 300;
-            color: #5a5a5a;
+            color: #4a4a4a;
             line-height: 1.6;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.03em;
             opacity: 0;
             transition: opacity 2s ease-in-out;
         }
@@ -47,13 +47,12 @@
             opacity: 1;
         }
 
-        /* LinkedIn Icon Style */
         .li-icon {
-            width: 32px;
-            height: 32px;
-            margin-top: 25px;
-            fill: #7a7a7a;
-            transition: fill 0.3s ease;
+            width: 28px;
+            height: 28px;
+            margin-top: 30px;
+            fill: #8a8a8a;
+            transition: fill 0.4s ease;
             display: inline-block;
         }
 
@@ -65,9 +64,10 @@
             position: absolute;
             bottom: 40px;
             font-size: 0.7rem;
-            color: rgba(0,0,0,0.15);
+            color: rgba(0,0,0,0.1);
             letter-spacing: 2px;
             text-transform: uppercase;
+            transition: opacity 1s ease;
         }
     </style>
 </head>
@@ -81,14 +81,15 @@
 
     <script>
         const steps = [
-            { text: "The world is vast, but it grows smaller the more we move through it.", colors: ["#f5f7fa", "#c3cfe2"] },
-            { text: "Cultures are the stories we tell together; travel is how we learn to read them.", colors: ["#fff1eb", "#edd1d1"] },
-            { text: "When we understand people, we realize we are rarely as different as we seem.", colors: ["#fdfcfb", "#e2d1c3"] },
-            { text: "I believe the best products are silent partners in a life well-lived.", colors: ["#f3e7e9", "#e3eeff"] },
-            { text: "Processes should exist to free our time, not to fill it.", colors: ["#fef9e7", "#f2e6d9"] }, // Soft coffee/cream tones
-            { text: "Let strangers in; every friend was a stranger once.", colors: ["#fff5e1", "#ffecd2"] },
-            { text: "Listen deeply. Be kind to every soul that crosses your path.", colors: ["#e6e9f0", "#eef1f5"] },
-            { text: "Thanks for visiting.", colors: ["#fdfcfb", "#e2d1c3"] },
+            { text: "The universe is vast.", colors: ["#f5f7fa", "#c3cfe2"] },
+            { text: "But it grows smaller the more we move through it.", colors: ["#fff1eb", "#edd1d1"] },
+            { text: "Cultures are the stories we share.", colors: ["#fdfcfb", "#e2d1c3"] },
+            { text: "Travel is how we learn to understand them.", colors: ["#f3e7e9", "#e3eeff"] },
+            { text: "Every friend was a stranger once.", colors: ["#faf9f6", "#f2e6d9"] },
+            { text: "Products and processes should free our time, not fill it.", colors: ["#fff5e1", "#ffecd2"] },
+            { text: "Listen deeply.", colors: ["#e6e9f0", "#eef1f5"] },
+            { text: "Be kind to every soul that crosses your path.", colors: ["#fdfcfb", "#e2d1c3"] },
+            { text: "Thanks for visiting.", colors: ["#f5f7fa", "#e2ebf0"] },
             { 
                 text: "Seth McBee<br><a href='https://linkedin.com/in/sethmcbee' target='_blank' rel='noopener noreferrer' onclick='event.stopPropagation()'><svg class='li-icon' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z'/></svg></a>", 
                 colors: ["#faf9f6", "#f2f2f2"] 
@@ -104,15 +105,19 @@
             const display = document.getElementById('text-display');
             const hint = document.querySelector('.hint');
             
+            // Fade out
             display.classList.remove('visible');
             if (hint) hint.style.opacity = '0';
 
             setTimeout(() => {
+                // Update text and background
                 display.innerHTML = steps[currentStep].text;
                 document.body.style.setProperty('--bg-start', steps[currentStep].colors[0]);
                 document.body.style.setProperty('--bg-end', steps[currentStep].colors[1]);
+                
+                // Fade back in
                 display.classList.add('visible');
-            }, 1000); // Slower, more intentional transitions
+            }, 1200); // The wait between the breaths
         }
     </script>
 </body>
