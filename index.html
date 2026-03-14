@@ -23,7 +23,7 @@
             align-items: center;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
-            transition: background 6s ease-in-out;
+            transition: background 7s ease-in-out; /* Slow, drifting transition */
             cursor: pointer;
             overflow: hidden;
             user-select: none;
@@ -106,15 +106,15 @@
         window.onload = startIntro;
 
         const steps = [
-            { text: "The universe is vast.", colors: ["#f5f7fa", "#c3cfe2"] }, // Soft Sky
-            { text: "The more we move through it, the smaller it gets.", colors: ["#faf9f6", "#e2d1c3"] }, // Warm Sand
-            { text: "Cultures are comprised of the stories we share.", colors: ["#fff1eb", "#edd1d1"] }, // Muted Rose
-            { text: "Travel is how we learn to understand them.", colors: ["#f3e7e9", "#e3eeff"] }, // Hazy Morning Blue
-            { text: "Be kind to those that cross your path.", colors: ["#fdfcfb", "#e2d1c3"] }, // Linen
-            { text: "Every friend was once a stranger.", colors: ["#fef9e7", "#f2e6d9"] }, // Cream/Oatmeal
-            { text: "Listen deeply, be present, and live in the moment.", colors: ["#e6e9f0", "#eef1f5"] }, // Cool Porcelain
-            { text: "Time is the most precious gift you can give, even to yourself.", colors: ["#ffecd2", "#fcb69f"] }, // Soft Sunset Amber
-            { text: "Products and processes should free our time, not fill it.", colors: ["#faf9f6", "#f2f2f2"] }, // Subtle Gray/Silver
+            { text: "The universe is vast.", colors: ["#f5f7fa", "#c3cfe2"] },
+            { text: "The more we move through it, the smaller it gets.", colors: ["#faf9f6", "#e2d1c3"] },
+            { text: "Cultures are comprised of the stories we share.", colors: ["#fff1eb", "#edd1d1"] },
+            { text: "Travel is how we learn to understand them.", colors: ["#f3e7e9", "#e3eeff"] },
+            { text: "Be kind to those that cross your path.", colors: ["#fdfcfb", "#e2d1c3"] },
+            { text: "Every friend was once a stranger.", colors: ["#fef9e7", "#f2e6d9"] },
+            { text: "Listen deeply, be present, and live in the moment.", colors: ["#e6e9f0", "#eef1f5"] },
+            { text: "Time is the most precious gift you can give, even to yourself.", colors: ["#ffecd2", "#fcb69f"] },
+            { text: "Products and processes should free our time, not fill it.", colors: ["#faf9f6", "#f2f2f2"] },
             { text: "Thanks for visiting.", colors: ["#fdfcfb", "#e2d1c3"] },
             { text: "...", colors: ["#faf9f6", "#f2f2f2"] },
             { 
