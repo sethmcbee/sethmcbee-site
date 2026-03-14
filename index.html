@@ -67,7 +67,7 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             opacity: 0;
-            transition: opacity 3s ease-in-out;
+            transition: opacity 2s ease-in-out;
             pointer-events: none;
         }
     </style>
@@ -88,7 +88,8 @@
             display.classList.remove('visible');
             display.innerHTML = "sethmcbee.com";
             setTimeout(() => { display.classList.add('visible'); }, 500);
-            setTimeout(() => { if(currentStep === -1) hint.style.opacity = '1'; }, 3500);
+            // Hint now appears after 1 second
+            setTimeout(() => { if(currentStep === -1) hint.style.opacity = '1'; }, 1000);
         }
 
         window.onload = startIntro;
@@ -128,7 +129,7 @@
         }
 
         function resetSite(e) {
-            e.stopPropagation(); // Prevents the body click from firing immediately
+            e.stopPropagation();
             currentStep = -1;
             document.body.style.setProperty('--bg-start', '#fdfcfb');
             document.body.style.setProperty('--bg-end', '#e2d1c3');
