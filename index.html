@@ -6,8 +6,9 @@
     <title>Seth McBee</title>
     <style>
         :root {
-            --bg-start: #fff1eb;
-            --bg-end: #ace0f9;
+            /* Muted morning palette: linen, soft sand, hazy sky */
+            --bg-start: #fdfcfb;
+            --bg-end: #e2d1c3;
         }
 
         body, html {
@@ -20,7 +21,7 @@
             align-items: center;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
-            transition: background 3s ease;
+            transition: background 4s ease-in-out;
             cursor: pointer;
             overflow: hidden;
             user-select: none;
@@ -28,66 +29,69 @@
 
         #content-container {
             text-align: center;
-            max-width: 600px;
+            max-width: 650px;
             padding: 40px;
         }
 
         .text-fade {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 300;
-            color: #444;
-            line-height: 1.5;
+            color: #5a5a5a;
+            line-height: 1.6;
+            letter-spacing: 0.02em;
             opacity: 0;
-            transition: opacity 1.5s ease-in-out;
+            transition: opacity 2s ease-in-out;
         }
 
         .text-fade.visible {
             opacity: 1;
         }
 
-        .linkedin-link {
-            display: block;
-            margin-top: 20px;
-            color: #0077b5;
-            text-decoration: none;
-            font-size: 1.2rem;
-            opacity: 0.8;
+        /* LinkedIn Icon Style */
+        .li-icon {
+            width: 32px;
+            height: 32px;
+            margin-top: 25px;
+            fill: #7a7a7a;
+            transition: fill 0.3s ease;
+            display: inline-block;
         }
 
-        .linkedin-link:hover {
-            opacity: 1;
+        .li-icon:hover {
+            fill: #0077b5;
         }
 
-        /* Subtle hint at the bottom */
         .hint {
             position: absolute;
-            bottom: 30px;
-            font-size: 0.8rem;
-            color: rgba(0,0,0,0.2);
-            letter-spacing: 1px;
+            bottom: 40px;
+            font-size: 0.7rem;
+            color: rgba(0,0,0,0.15);
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body onclick="nextStep()">
 
     <div id="content-container">
-        <div id="text-display" class="text-fade">Click to begin</div>
+        <div id="text-display" class="text-fade visible">sethmcbee.com</div>
     </div>
 
-    <div class="hint">CLICK ANYWHERE</div>
+    <div class="hint">click to drift</div>
 
     <script>
         const steps = [
-            { text: "The world is vast, but it grows smaller the more we move through it.", colors: ["#fff1eb", "#ace0f9"] },
-            { text: "Cultures are the stories we tell together; travel is how we learn to read them.", colors: ["#fdfcfb", "#e2d1c3"] },
-            { text: "When we understand people, we realize we are rarely as different as we seem.", colors: ["#e6e9f0", "#eef1f5"] },
-            { text: "I believe the best products are silent partners in a life well-lived.", colors: ["#ffecd2", "#fcb69f"] },
-            { text: "Processes should exist to free our time, not to fill it.", colors: ["#d4fc79", "#b7f8db"] },
-            { text: "Let strangers in; every friend was a stranger once.", colors: ["#f6d365", "#fda085"] },
-            { text: "Listen deeply. Be kind to every soul that crosses your path.", colors: ["#cfd9df", "#e2ebf0"] },
+            { text: "The world is vast, but it grows smaller the more we move through it.", colors: ["#f5f7fa", "#c3cfe2"] },
+            { text: "Cultures are the stories we tell together; travel is how we learn to read them.", colors: ["#fff1eb", "#edd1d1"] },
+            { text: "When we understand people, we realize we are rarely as different as we seem.", colors: ["#fdfcfb", "#e2d1c3"] },
+            { text: "I believe the best products are silent partners in a life well-lived.", colors: ["#f3e7e9", "#e3eeff"] },
+            { text: "Processes should exist to free our time, not to fill it.", colors: ["#fef9e7", "#f2e6d9"] }, // Soft coffee/cream tones
+            { text: "Let strangers in; every friend was a stranger once.", colors: ["#fff5e1", "#ffecd2"] },
+            { text: "Listen deeply. Be kind to every soul that crosses your path.", colors: ["#e6e9f0", "#eef1f5"] },
+            { text: "Thanks for visiting.", colors: ["#fdfcfb", "#e2d1c3"] },
             { 
-                text: "Thanks for visiting.<br><br><strong>Seth McBee</strong><br><a href='https://linkedin.com/in/sethmcbee' class='linkedin-link' onclick='event.stopPropagation()'>LinkedIn</a>", 
-                colors: ["#fff1eb", "#ace0f9"] 
+                text: "Seth McBee<br><a href='https://linkedin.com/in/sethmcbee' target='_blank' rel='noopener noreferrer' onclick='event.stopPropagation()'><svg class='li-icon' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z'/></svg></a>", 
+                colors: ["#faf9f6", "#f2f2f2"] 
             }
         ];
 
@@ -98,24 +102,17 @@
             if (currentStep >= steps.length) return;
 
             const display = document.getElementById('text-display');
+            const hint = document.querySelector('.hint');
             
-            // Fade out current text
             display.classList.remove('visible');
+            if (hint) hint.style.opacity = '0';
 
             setTimeout(() => {
-                // Update text and colors
                 display.innerHTML = steps[currentStep].text;
                 document.body.style.setProperty('--bg-start', steps[currentStep].colors[0]);
                 document.body.style.setProperty('--bg-end', steps[currentStep].colors[1]);
-                
-                // Fade in new text
                 display.classList.add('visible');
-            }, 800);
-
-            // Hide hint after first click
-            if (currentStep === 0) {
-                document.querySelector('.hint').style.display = 'none';
-            }
+            }, 1000); // Slower, more intentional transitions
         }
     </script>
 </body>
