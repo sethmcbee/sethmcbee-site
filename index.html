@@ -23,7 +23,7 @@
             align-items: center;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
-            transition: background 5s ease-in-out;
+            transition: background 6s ease-in-out;
             cursor: pointer;
             overflow: hidden;
             user-select: none;
@@ -49,14 +49,13 @@
             opacity: 1;
         }
 
-        /* Hover state for the name */
         .name-link {
             cursor: pointer;
             transition: color 0.3s ease;
         }
 
         .name-link:hover {
-            color: #0077b5; /* LinkedIn Blue or choose #8a8a8a for subtle gray */
+            color: #0077b5;
         }
 
         .li-icon {
@@ -107,15 +106,16 @@
         window.onload = startIntro;
 
         const steps = [
-            { text: "The universe is vast.", colors: ["#f5f7fa", "#c3cfe2"] },
-            { text: "But it grows smaller the more we move through it.", colors: ["#fff1eb", "#edd1d1"] },
-            { text: "Cultures are just the stories we share.", colors: ["#fdfcfb", "#e2d1c3"] },
-            { text: "Travel helps us learn to understand them.", colors: ["#f3e7e9", "#e3eeff"] },
-            { text: "Every friend was once a stranger.", colors: ["#faf9f6", "#f2e6d9"] },
-            { text: "Products and processes should free our time, not fill it.", colors: ["#fff5e1", "#ffecd2"] },
-            { text: "Listen deeply.", colors: ["#e6e9f0", "#eef1f5"] },
-            { text: "Be kind to those that cross your path.", colors: ["#fdfcfb", "#e2d1c3"] },
-            { text: "Thanks for visiting.", colors: ["#f5f7fa", "#e2ebf0"] },
+            { text: "The universe is vast.", colors: ["#f5f7fa", "#c3cfe2"] }, // Soft Sky
+            { text: "The more we move through it, the smaller it gets.", colors: ["#faf9f6", "#e2d1c3"] }, // Warm Sand
+            { text: "Cultures are comprised of the stories we share.", colors: ["#fff1eb", "#edd1d1"] }, // Muted Rose
+            { text: "Travel is how we learn to understand them.", colors: ["#f3e7e9", "#e3eeff"] }, // Hazy Morning Blue
+            { text: "Be kind to those that cross your path.", colors: ["#fdfcfb", "#e2d1c3"] }, // Linen
+            { text: "Every friend was once a stranger.", colors: ["#fef9e7", "#f2e6d9"] }, // Cream/Oatmeal
+            { text: "Listen deeply, be present, and live in the moment.", colors: ["#e6e9f0", "#eef1f5"] }, // Cool Porcelain
+            { text: "Time is the most precious gift you can give, even to yourself.", colors: ["#ffecd2", "#fcb69f"] }, // Soft Sunset Amber
+            { text: "Products and processes should free our time, not fill it.", colors: ["#faf9f6", "#f2f2f2"] }, // Subtle Gray/Silver
+            { text: "Thanks for visiting.", colors: ["#fdfcfb", "#e2d1c3"] },
             { text: "...", colors: ["#faf9f6", "#f2f2f2"] },
             { 
                 text: "<span class='name-link' onclick='resetSite(event)'>Seth McBee</span><br><a href='https://linkedin.com/in/sethmcbee' target='_blank' rel='noopener noreferrer' onclick='event.stopPropagation()'><svg class='li-icon' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z'/></svg></a>", 
@@ -126,11 +126,9 @@
         let currentStep = -1;
 
         function nextStep() {
-            // If we are at the last step, clicking the body does nothing.
             if (currentStep >= steps.length - 1) return;
 
             currentStep++;
-
             display.classList.remove('visible');
             hint.style.opacity = '0';
 
@@ -140,7 +138,6 @@
                 document.body.style.setProperty('--bg-end', steps[currentStep].colors[1]);
                 display.classList.add('visible');
                 
-                // If this is the final step, remove the pointer cursor from the body
                 if (currentStep === steps.length - 1) {
                     document.body.style.cursor = 'default';
                 }
@@ -150,7 +147,7 @@
         function resetSite(e) {
             e.stopPropagation();
             currentStep = -1;
-            document.body.style.cursor = 'pointer'; // Bring back the pointer cursor
+            document.body.style.cursor = 'pointer';
             document.body.style.setProperty('--bg-start', '#fdfcfb');
             document.body.style.setProperty('--bg-end', '#e2d1c3');
             startIntro();
